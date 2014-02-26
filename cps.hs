@@ -1,5 +1,13 @@
 
 import Lisp
+import ObjectCode
+
+stackTransform :: Elem -> [Instruction]
+stackTransform (Symbol x) = [PushS x]
+stackTransform (Integer x) = [PushI x]
+stackTransform (Cons (Cons x xs) ys) =
+  (stackTransform (Cons x xs)) ++ [PopRet] ++
+  prepareArguments ys ++ [CallRet]
 
 
 
@@ -14,6 +22,12 @@ call d
 push eax
 push f
 call a
+
+((a b) c)
+push b
+call a
+popret
+callret
 
 -}
 

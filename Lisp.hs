@@ -19,16 +19,9 @@ foldlList _ x0 Null        = x0
 foldrList f xn (Cons x xs) = f x (foldrList f xn xs)
 foldrList _ xn Null        = xn
 
-
+infixr 5 %%
 (%%) :: Elem -> Elem -> Elem
 (%%) = Cons
-
-{-
-instance Functor Elem where
- 
- fmap f (Cons x xs) = Cons (f x) (fmap f xs)
-  fmap _ Null        = Null
--}
 
 instance Show Elem where
   show (Symbol x) = x
