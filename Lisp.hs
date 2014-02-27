@@ -6,7 +6,7 @@ data Elem = Cons Elem Elem
           | Null
           | Symbol String
           | Integer Integer
-                   
+
 makeList :: [Elem] -> Elem
 makeList = foldr Cons Null
 
